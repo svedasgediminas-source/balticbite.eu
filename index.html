@@ -4108,7 +4108,7 @@ document.addEventListener("click",e=>{
   if(d.sec!==undefined){e.preventDefault();const m=$("#hdrMenu");if(m.open)closeDlg(m,true);goSection(d.sec);return}
   if(d.hm!==undefined){const b=$$("#slot-hdr button")[+d.hm];closeDlg($("#hdrMenu"),true);if(b)b.click();return}
   if(t.id==="ctaSeason"||t.id==="picksLink"){const n=seasonItems().length;st.q="";st.tok=[];$("#q").value="";scopeOff(true);sfReset();st.cat=n?SEASON[mk()].cat:-1;renderCatalog(true);goCatalog();return}
-  if(t.id==="checkout"){toast(D().checkout,D().checkoutNote,null,"info");return}
+  if(t.id==="checkout"){if(window.BB&&BB.checkout)BB.checkout(t);else toast(D().checkout,D().checkoutNote,null,"info");return}
 });
 function refocusCart(t,kind,key){
   const list=$("#cList");
@@ -7977,5 +7977,6 @@ requestAnimationFrame(()=>{renderRec();readHash();renderDock()});
   if(document.readyState==="complete")setTimeout(go,400);else addEventListener("load",()=>setTimeout(go,400));
 })();
 </script>
+<script src="checkout.js"></script>
 </body>
 </html>
