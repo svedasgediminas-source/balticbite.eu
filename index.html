@@ -7101,5 +7101,20 @@ requestAnimationFrame(()=>{renderRec();readHash();renderDock()});
 })();
 
 </script>
+<script data-mod="links">
+/* BalticBite product links: ?p=<key>&v=<code> (or #p=<key>&v=<code>) opens that product – used by kainos.lt and shared links */
+(function(){
+  function want(){
+    const s=new URLSearchParams(location.search);let k=s.get("p"),v=s.get("v");
+    if(!k){const m=/^#p=([^&]+)(?:&v=(.+))?$/.exec(location.hash);if(m){k=decodeURIComponent(m[1]);v=m[2]&&decodeURIComponent(m[2])}}
+    const BB=window.BB;if(!k||!BB)return null;const i=BB.indexOfKey(k);if(i==null)return null;
+    const j=v?BB.P[i].v.findIndex(x=>String(x[0])===v):-1;return{i,j:j>=0?j:null};
+  }
+  function go(){const w=want();if(w)window.BB.openPD(w.i,null,w.j)}
+  addEventListener("hashchange",go);
+  /* after the page and its modules have finished their first render (they may reset dialogs) */
+  if(document.readyState==="complete")setTimeout(go,400);else addEventListener("load",()=>setTimeout(go,400));
+})();
+</script>
 </body>
 </html>
