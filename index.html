@@ -208,6 +208,11 @@ img,svg{display:block}
 .util li{display:flex;align-items:center;gap:8px;white-space:nowrap}
 .util li .ui{width:17px;height:17px;color:var(--ink)}
 .util .u-short{display:none}
+.mksw{display:inline-flex;align-items:center;gap:6px;margin-left:auto;white-space:nowrap;font-size:13px;color:var(--ink-2)}
+.mksw{flex:none}.mksw .selw select{width:auto;height:28px;padding:0 28px 0 8px;font-size:13px;font-weight:600}
+@media (max-width:759px){.util ul{overflow:hidden}.util li.u-ship{min-width:0}.util li.u-ship .ulk{min-width:0;overflow:hidden;text-overflow:ellipsis}.util li.u-ship .ulk span{overflow:hidden;text-overflow:ellipsis}}
+.mksw .selw::after{right:11px;width:6px;height:6px}
+@media (max-width:759px){.mksw .mk-l{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 .sis{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:600;font-size:13px}
 .sis .ui{width:14px;height:14px}
 .sis:hover span{text-decoration:underline;text-underline-offset:3px}
@@ -2227,6 +2232,7 @@ html.lock .bbl-dock{opacity:0;pointer-events:none}
       <li class="u-ship"><button type="button" class="ulk" data-info="ship" aria-haspopup="dialog"><svg class="ui" viewBox="0 0 24 24" aria-hidden="true"><use href="#u-truck"/></svg><span class="u-long" data-t="ship"></span><span class="u-short" data-t="shipShort"></span></button></li>
       <li class="u-ret"><button type="button" class="ulk" data-info="ret" aria-haspopup="dialog"><svg class="ui" viewBox="0 0 24 24" aria-hidden="true"><use href="#u-return"/></svg><span data-t="returns"></span></button></li>
     </ul>
+    <label class="mksw"><span class="mk-l" data-t="mkL"></span><span class="selw"><select id="mkSel"><option value="lt">Lietuva</option><option value="de">Deutschland</option></select></span></label>
     <a class="sis" href="https://baltaqua.eu" target="_blank" rel="noopener"><span class="s-long" data-t="sister"></span><span class="s-short">BaltAqua</span><svg class="ui" viewBox="0 0 24 24" aria-hidden="true"><use href="#u-ext"/></svg></a>
   </div>
 </div>
@@ -2249,12 +2255,12 @@ html.lock .bbl-dock{opacity:0;pointer-events:none}
       </button>
       <div class="bb-slot" id="slot-hdr"></div>
       <button class="ibtn hm-btn" id="hdrMore" type="button" aria-haspopup="dialog" aria-controls="hdrMenu" aria-expanded="false" hidden data-ta="aria-label:moreMenu;title:moreMenu"><svg class="ui" viewBox="0 0 24 24" aria-hidden="true"><use href="#u-more"/></svg></button>
-      <div class="seg" id="seg" role="group" data-ta="aria-label:marketL">
-        <button type="button" data-lang="lt" aria-label="LT – Lietuva, lietuviškai">LT</button>
-        <button type="button" data-lang="en" aria-label="EN – Lithuanian shop, in English">EN</button>
-        <button type="button" data-lang="ru" aria-label="RU – литовский магазин, на русском">RU</button>
-        <button type="button" data-lang="pl" aria-label="PL – sklep litewski, po polsku">PL</button>
-        <button type="button" data-lang="de" aria-label="DE – Deutschland, auf Deutsch">DE</button>
+      <div class="seg" id="seg" role="group" data-ta="aria-label:langL">
+        <button type="button" data-lang="lt" aria-label="LT – lietuvių kalba">LT</button>
+        <button type="button" data-lang="en" aria-label="EN – English">EN</button>
+        <button type="button" data-lang="ru" aria-label="RU – русский язык">RU</button>
+        <button type="button" data-lang="pl" aria-label="PL – język polski">PL</button>
+        <button type="button" data-lang="de" aria-label="DE – Deutsch">DE</button>
       </div>
       <button class="cartbtn is-empty" id="cartBtn" type="button" aria-haspopup="dialog" aria-controls="cd">
         <span class="bagw"><svg class="ui" viewBox="0 0 24 24" aria-hidden="true"><use href="#u-bag"/></svg><b class="badge" id="badge">0</b></span>
@@ -2583,7 +2589,7 @@ de:{title:"BalticBite – Angelzubehör",metaDesc:"BalticBite – Angelzubehör 
  subtotal:"Zwischensumme",vatShip:"Preise inkl. MwSt. Versandkosten werden bei der Bestellung berechnet.",
  freeLeft:"Noch {x} bis zum kostenlosen Versand",freeOk:"Versandkostenfrei",
  checkout:"Zur Kasse",checkoutNote:"Bestellungen sind noch nicht möglich.",
- langToast:"Deutscher Shop · Preise inkl. MwSt.",cartKept:"{m}-Warenkorb ({n}) bleibt separat gespeichert",
+ langToast:"Deutscher Shop · Preise inkl. MwSt.",cartKept:"Warenkorb für {m} ({n}) bleibt separat gespeichert",
  noHits:"Keine Treffer",noHitsQ:"Keine Treffer für „{q}“",noHitsHint:"Schreibweise prüfen, einen kürzeren Begriff versuchen oder die Kategorie wechseln.",reset:"Alle Artikel zeigen",
  clearSearch:"Suche löschen",found:"Gefunden",inCat:"in der Kategorie",
  trustL:"Warum bei uns kaufen",
@@ -2654,7 +2660,7 @@ en:{title:"BalticBite – fishing tackle",metaDesc:"BalticBite – fishing tackl
  subtotal:"Subtotal",vatShip:"Prices incl. VAT. Delivery cost is calculated at checkout.",
  freeLeft:"{x} left to free delivery",freeOk:"Free delivery",
  checkout:"Proceed to checkout",checkoutNote:"We are not taking orders yet.",
- langToast:"English · Lithuanian shop, prices incl. VAT",cartKept:"The {m} basket ({n}) is kept separately",
+ langToast:"English · Lithuanian shop, prices incl. VAT",cartKept:"The basket for {m} ({n}) is kept separately",
  noHits:"Nothing found",noHitsQ:"Nothing found for “{q}”",noHitsHint:"Check the spelling, try a shorter word or another category. Product names are mostly in Lithuanian – brand and model names work best.",reset:"Show all products",
  clearSearch:"Clear search",found:"Found",inCat:"in category",
  trustL:"Why buy here",
@@ -2725,7 +2731,7 @@ ru:{title:"BalticBite – рыболовные снасти",metaDesc:"BalticBit
  subtotal:"Промежуточный итог",vatShip:"Цены с НДС. Стоимость доставки рассчитывается при оформлении заказа.",
  freeLeft:"До бесплатной доставки осталось {x}",freeOk:"Доставка бесплатная",
  checkout:"Перейти к оплате",checkoutNote:"Заказы пока не принимаются.",
- langToast:"Русский · литовский магазин, цены с НДС",cartKept:"Корзина {m} ({n}) сохранена отдельно",
+ langToast:"Русский · литовский магазин, цены с НДС",cartKept:"Корзина для {m} ({n}) сохранена отдельно",
  noHits:"Ничего не найдено",noHitsQ:"По запросу «{q}» ничего не найдено",noHitsHint:"Проверь написание, попробуй более короткое слово или другую категорию. Названия товаров в основном на литовском – лучше искать по бренду и модели.",reset:"Показать все товары",
  clearSearch:"Очистить поиск",found:"Найдено",inCat:"в категории",
  trustL:"Почему стоит покупать здесь",
@@ -2796,7 +2802,7 @@ pl:{title:"BalticBite – sprzęt wędkarski",metaDesc:"BalticBite – sprzęt w
  subtotal:"Suma częściowa",vatShip:"Ceny z VAT. Koszt dostawy jest obliczany przy składaniu zamówienia.",
  freeLeft:"Do darmowej dostawy brakuje {x}",freeOk:"Dostawa gratis",
  checkout:"Przejdź do płatności",checkoutNote:"Na razie nie przyjmujemy zamówień.",
- langToast:"Polski · sklep litewski, ceny z VAT",cartKept:"Koszyk {m} ({n}) zapisany osobno",
+ langToast:"Polski · sklep litewski, ceny z VAT",cartKept:"Koszyk dla {m} ({n}) zapisany osobno",
  noHits:"Nic nie znaleziono",noHitsQ:"Nic nie znaleziono dla „{q}”",noHitsHint:"Sprawdź pisownię, spróbuj krótszego słowa lub innej kategorii. Nazwy produktów są głównie po litewsku – najlepiej szukać po marce i modelu.",reset:"Pokaż wszystkie produkty",
  clearSearch:"Wyczyść wyszukiwanie",found:"Znaleziono",inCat:"w kategorii",
  trustL:"Dlaczego warto kupować u nas",
@@ -2842,6 +2848,36 @@ pl:{title:"BalticBite – sprzęt wędkarski",metaDesc:"BalticBite – sprzęt w
    ["Co jest zapisywane w Twojej przeglądarce","li",["Koszyk, zapamiętane i ostatnio oglądane produkty, porównanie, język i ustawienia wyglądu.","Twoje wybory w sekcjach zestawu wędkarskiego, prognozy brań i narzędzi wędkarza.","Wszystko to pozostaje wyłącznie w lokalnej pamięci Twojej przeglądarki – strona nigdzie tych danych nie wysyła."]],
    ["Jak to usunąć","p",["Wyczyść dane tej witryny w ustawieniach przeglądarki."]]]}}}
 };
+
+/* the season, map and shipping lines of each market in every language (T has each language's home market) */
+const TM={
+ lt:{de:{ship:"Pristatymas į Vokietiją · nemokamai nuo 49 €",shipShort:"Nemokamas pristatymas nuo 49 €",mapL:"Hitra · 63°40′ N 8°50′ E",
+  heroEy:"Jūrinė žūklė Norvegijoje · {y} m. sezonas",heroT:["Fjorde","kimba menkės"],heroLead:"Pilkeriai, sistemėlės natūraliam masalui ir skumbrių sistemėlės Norvegijos sezonui.",
+  ctaSeason:"Jūrinės žūklės prekės",fSeasonFor:"jūrinei žūklei",fFrom:"jūrinė žūklė",rulerT:"Geriausi mėnesiai Norvegijoje",
+  legend:[["Menkės ir saidos (pagrindinis sezonas)","hot"],["Geros sąlygos","on"]],picksT:"Pasiruošk Norvegijai",picksLink:"Visos jūrinės žūklės prekės",shipLab:"Parduotuvė Vokietijai"}},
+ en:{de:{ship:"Delivery to Germany · free from €49",shipShort:"Free delivery from €49",mapL:"Hitra · 63°40′ N 8°50′ E",
+  heroEy:"Sea fishing in Norway · {y} season",heroT:["In the fjord","the cod bite"],heroLead:"Pilkers, natural bait rigs and mackerel feathers for the Norway season.",
+  ctaSeason:"Sea fishing gear",fSeasonFor:"for sea fishing",fFrom:"sea fishing",rulerT:"Best months for Norway",
+  legend:[["Cod & coalfish (main season)","hot"],["Good conditions","on"]],picksT:"Ready for Norway",picksLink:"All sea fishing gear",shipLab:"Shop for Germany"}},
+ ru:{de:{ship:"Доставка в Германию · бесплатно от 49 €",shipShort:"Бесплатная доставка от 49 €",mapL:"Хитра · 63°40′ N 8°50′ E",
+  heroEy:"Морская рыбалка в Норвегии · сезон {y}",heroT:["Во фьорде","клюёт треска"],heroLead:"Пилькеры, оснастки для натуральной насадки и самодуры на скумбрию для норвежского сезона.",
+  ctaSeason:"Товары для морской рыбалки",fSeasonFor:"для морской рыбалки",fFrom:"морская рыбалка",rulerT:"Лучшие месяцы для Норвегии",
+  legend:[["Треска и сайда (основной сезон)","hot"],["Хорошие условия","on"]],picksT:"Готовься к Норвегии",picksLink:"Все товары для морской рыбалки",shipLab:"Магазин для Германии"}},
+ pl:{de:{ship:"Dostawa do Niemiec · gratis od 49 €",shipShort:"Darmowa dostawa od 49 €",mapL:"Hitra · 63°40′ N 8°50′ E",
+  heroEy:"Wędkarstwo morskie w Norwegii · sezon {y}",heroT:["W fiordzie","biorą dorsze"],heroLead:"Pilkery, zestawy na naturalną przynętę i przywieszki na makrele na sezon w Norwegii.",
+  ctaSeason:"Sprzęt morski",fSeasonFor:"do wędkarstwa morskiego",fFrom:"wędkarstwo morskie",rulerT:"Najlepsze miesiące w Norwegii",
+  legend:[["Dorsz i czarniak (główny sezon)","hot"],["Dobre warunki","on"]],picksT:"Gotowy na Norwegię",picksLink:"Cały sprzęt morski",shipLab:"Sklep dla Niemiec"}},
+ de:{lt:{ship:"Versand nach Litauen · ab 49 € versandkostenfrei",shipShort:"Ab 49 € versandkostenfrei",mapL:"Klaipėda · 55°42′ N 21°08′ E",
+  heroEy:"Eisangeln · Dezember–März",heroT:["Unter dem Eis","beißt der Barsch"],heroLead:"Isolierte Zelte, Böden mit Öffnungen für die Eislöcher und Kleinteile fürs Eisangeln.",
+  ctaSeason:"Zum Eisangeln",fSeasonFor:"fürs Eisangeln",fFrom:"Saisonartikel",rulerT:"Wann was beißt",
+  legend:[["Eisangeln","hot"],["Spinnfischen, Raubfisch","on"]],picksT:"Bereit fürs Eis",picksLink:"Alle Artikel fürs Eisangeln",shipLab:"Shop für Litauen"}}};
+/* market picker: label, names, and the price note shown in the cart and on a switch */
+const TMK={
+ lt:{langL:"Kalba",mkL:"Pristatymas į",mkName:{lt:"Lietuvos",de:"Vokietijos"},mkPrice:{lt:"Kainos Lietuvai su PVM",de:"Kainos Vokietijai su PVM"}},
+ en:{langL:"Language",mkL:"Deliver to",mkName:{lt:"Lithuania",de:"Germany"},mkPrice:{lt:"Prices for Lithuania incl. VAT",de:"Prices for Germany incl. VAT"}},
+ ru:{langL:"Язык",mkL:"Доставка в",mkName:{lt:"Литвы",de:"Германии"},mkPrice:{lt:"Цены для Литвы с НДС",de:"Цены для Германии с НДС"}},
+ pl:{langL:"Język",mkL:"Dostawa do",mkName:{lt:"Litwy",de:"Niemiec"},mkPrice:{lt:"Ceny dla Litwy z VAT",de:"Ceny dla Niemiec z VAT"}},
+ de:{langL:"Sprache",mkL:"Lieferung nach",mkName:{lt:"Litauen",de:"Deutschland"},mkPrice:{lt:"Preise für Litauen inkl. MwSt.",de:"Preise für Deutschland inkl. MwSt."}}};
 
 (function(){
 "use strict";
@@ -2901,16 +2937,30 @@ function trU(s,l){const k=xi(l);if(k<0||!s)return s;const a=TRX.u["1 vnt."];if(s
   return String(s).replace(/[\p{L}]+\.?/gu,w=>{const t=TRX.u[w]||TRX.u[w.replace(/\.$/,"")];return t?t[k]+(w.endsWith(".")&&!TRX.u[w]?".":""):w})}
 C.forEach(c=>{const t=TRX.cats[c.lt[0]];XL.forEach((l,k)=>{if(!c[l])c[l]=t?t[k]:c.lt})});
 P.forEach(p=>XL.forEach(l=>{if(!p[l])p[l]=Object.assign({},p.lt,{vl:trVL(p.lt.vl,l),u:trU(p.lt.u,l)})}));
-let lang="lt";
-try{const s=localStorage.getItem(SK_LANG);if(LANGS.indexOf(s)>=0)lang=s}catch(e){}
-/* ?lang=en in a shared link picks the language (and is remembered) */
-try{const q=new URLSearchParams(location.search).get("lang");if(LANGS.indexOf(q)>=0){lang=q;localStorage.setItem(SK_LANG,q)}}catch(e){}
-const mk=()=>MK(lang);
+/* market (prices, stock, season) = where the visitor is; language = what they read. Both can be picked on the page and are
+   remembered; ?lang=en / ?market=de in a link pick them too. First visit: the time zone (no IP lookup) – Berlin, Vienna,
+   Zurich → DE shop, Vilnius → LT shop, else a de-DE/-AT/-CH browser → DE, else LT; the language is the browser's first
+   one we have, else the market's own */
+const SK_MKT="bb-market";
+function guessMarket(){let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(/^Europe\/(Berlin|Vienna|Zurich|Busingen)$/.test(tz))return"de";if(tz==="Europe/Vilnius")return"lt";
+  return (navigator.languages||[navigator.language||""]).some(x=>/^de-(de|at|ch)$/i.test(x))?"de":"lt"}
+let lang=null,market=null;
+try{const s=localStorage.getItem(SK_LANG);if(LANGS.indexOf(s)>=0)lang=s;const m=localStorage.getItem(SK_MKT);if(m==="lt"||m==="de")market=m}catch(e){}
+try{const u=new URLSearchParams(location.search),q=u.get("lang"),m=u.get("market");
+  if(LANGS.indexOf(q)>=0){lang=q;localStorage.setItem(SK_LANG,q)}if(m==="lt"||m==="de"){market=m;localStorage.setItem(SK_MKT,m)}}catch(e){}
+if(!market)market=guessMarket();
+if(!lang){for(const x of (navigator.languages||[navigator.language||""])){const b=String(x).slice(0,2).toLowerCase();if(LANGS.indexOf(b)>=0){lang=b;break}}}
+if(!lang)lang=market;
+const mk=()=>market;
 const st={cat:-1,q:"",tok:[],sort:"rec",avail:false,shown:PAGE,res:{list:[],counts:[],total:0,base:[]},sel:{lt:new Map(),de:new Map()},cart:{lt:new Map(),de:new Map()},
   sf:{g:[],mm:[],kg:[],hook:[],cw:null},scope:null,vav:false};
 /* "Tik turimos / Nur lieferbare" is remembered for this browser session only */
 try{st.avail=sessionStorage.getItem(SK_AV)==="1"}catch(e){}
-const D=()=>T[lang];
+/* texts of the language, with the season / shipping lines of the market (TM) and the market names (TMK) */
+const DC={};
+const D=()=>{const k=lang+market;if(DC[k])return DC[k];const b=T[lang],o=(TM[lang]&&TM[lang][market])||{},d=Object.assign({},b,o,TMK[lang]);
+  if(o.shipLab)d.info=Object.assign({},b.info,{ship:Object.assign({},b.info.ship,{lab:o.shipLab})});d.mk=d.mkPrice[market];return DC[k]=d};
 const cart=()=>st.cart[mk()];
 const reduce=()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}};
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -2947,10 +2997,11 @@ function tokenize(q){return norm(q).split(/[^\p{L}\p{N},.]+/u).map(w=>syn(w.repl
 const needleOf=t=>t.length<3?" "+t:t;
 
 /* ---------- variants, stock, images ---------- */
-const VLI=()=>mk()==="lt"?1:2, VPI=()=>mk()==="lt"?3:4;
+/* variant labels follow the language (DE or LT texts), prices the market */
+const VLI=()=>lang==="de"?2:1, VPI=()=>market==="de"?4:3;
 const vlabel=v=>String(v[VLI()]||v[1]||v[0]||"");
 const vprice=v=>+v[VPI()]||0;
-function stockOf(v,l){const s=String((v&&v[5])||"");if(s==="lt")return MK(l||lang)==="lt"?{k:"",ok:true}:{k:"out",ok:false};/* sold in the LT shop only */if(s==="out")return{k:"out",ok:false};if(s.indexOf("soon:")===0)return{k:"soon",ok:false,d:s.slice(5)};if(s==="new")return{k:"new",ok:true};return{k:"",ok:true}}
+function stockOf(v,m){const s=String((v&&v[5])||"");if(s==="lt")return (m||market)==="lt"?{k:"",ok:true}:{k:"out",ok:false};/* sold in the LT shop only */if(s==="out")return{k:"out",ok:false};if(s.indexOf("soon:")===0)return{k:"soon",ok:false,d:s.slice(5)};if(s==="new")return{k:"new",ok:true};return{k:"",ok:true}}
 /* expected date: DE "~15.11.", LT "apie lapkričio 15 d." (month name, so "11-15" is not read as a range) */
 function soonDate(x){const m=/^(\d{1,2})-(\d{1,2})$/.exec(x||"");if(!m)return x||"";const mm=m[1].padStart(2,"0"),dd=m[2].padStart(2,"0");
   if(lang==="de")return `${dd}.${mm}.`;
@@ -3150,20 +3201,20 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(watchPh))).observe(d
 
 /* ---------- per-language index (computed once) ---------- */
 const IX={};
-function ix(l){
-  if(IX[l])return IX[l];
-  const vl=MK(l)==="lt"?1:2,vp=MK(l)==="lt"?3:4;
-  IX[l]=P.map(p=>{
-    const L=p[l]||{},av=p.v.map(v=>stockOf(v,l).ok),pr=p.v.map(v=>+v[vp]||0),ap=pr.filter((x,j)=>av[j]);
+function ix(l,m){
+  m=m||market;const key=l+"|"+m;
+  if(IX[key])return IX[key];
+  const vl=l==="de"?2:1,vp=m==="de"?4:3;
+  return IX[key]=P.map(p=>{
+    const L=p[l]||{},av=p.v.map(v=>stockOf(v,m).ok),pr=p.v.map(v=>+v[vp]||0),ap=pr.filter((x,j)=>av[j]);
     const cats=(Array.isArray(p.c)?p.c:[]).filter(c=>C[c]);
     const hay=hayify([L.n,L.a,(L.s||[]).join(" "),L.u,L.vl,p.v.map(v=>(v[vl]||"")+" "+v[0]).join(" "),cats.map(c=>C[c][l][0]).join(" ")].join(" "));
-    const any=av.some(Boolean),tier=any?0:p.v.some(v=>stockOf(v,l).k==="soon")?1:2;
+    const any=av.some(Boolean),tier=any?0:p.v.some(v=>stockOf(v,m).k==="soon")?1:2;
     return{min:Math.min.apply(null,ap.length?ap:pr),max:Math.max.apply(null,pr),diff:new Set(pr).size>1,any,tier,hay,name:hayify(L.n),sortName:String(L.n||""),cats,pc:cats.length?cats[0]:99,rank:+p.r||2};
   });
-  return IX[l];
 }
 const CATN={};
-function catCounts(){if(CATN[lang])return CATN[lang];const n=new Array(C.length).fill(0);ix(lang).forEach(r=>r.cats.forEach(c=>n[c]++));return CATN[lang]=n}
+function catCounts(){const k=lang+market;if(CATN[k])return CATN[k];const n=new Array(C.length).fill(0);ix(lang).forEach(r=>r.cats.forEach(c=>n[c]++));return CATN[k]=n}
 
 function compute(noSpec){
   const R=ix(lang),tk=st.tok.map(t=>needleOf(t.b!==t.a&&R.some(r=>r.hay.indexOf(t.b)>=0)?t.b:t.a)),counts=new Array(C.length).fill(0),list=[],base=[];let total=0;
@@ -3531,6 +3582,7 @@ function renderStatic(){
   $$("[data-ta]").forEach(el=>el.dataset.ta.split(";").forEach(pair=>{const k=pair.split(":");const v=d[k[1]];if(typeof v==="string")el.setAttribute(k[0],v)}));
   qPh();
   $$("#seg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===lang)));
+  const ms=$("#mkSel");if(ms){ms.value=market;ms.setAttribute("title",d.mk)}
   $("#sort").innerHTML=Object.keys(d.sorts).map(s=>`<option value="${s}"${s===st.sort?" selected":""}>${esc(d.sorts[s])}</option>`).join("");
   $("#catalogLab").textContent=`${P.length} ${word(P.length)}`;
   /* "su PVM, pristatymas – atskirai" / "inkl. MwSt., zzgl. Versand": the shipping word opens the shipping dialog */
@@ -3734,7 +3786,7 @@ function vcols(i){
   const key=lang+i;if(VC.has(key))return VC.get(key);
   const p=P[i],n=p.v.length;let out=null;
   /* parsed from the market's own texts (the labels are Lithuanian for en/ru/pl); the headings are translated at the end */
-  const parts=String(p[mk()].vl||"").split(/\s*\/\s*/).filter(Boolean);
+  const parts=String(p[lang==="de"?"de":"lt"].vl||"").split(/\s*\/\s*/).filter(Boolean);
   if(n>=4){
     const rows=p.v.map(v=>{
       const lab=vlabel(v),hide=m=>"\u0001".repeat(m.length),mk=lab.replace(VDIM,hide).replace(VSPAN,hide),toks=[],occ={};let m;VTOK.lastIndex=0;
@@ -3999,9 +4051,19 @@ function setLang(l){
   const sig=ae&&ae.closest&&ae.closest("#cd,#pd")?(ae.matches(".x")?".x":["data-inc","data-dec","data-rm","data-add","data-pick","data-thumb"].map(a=>ae.hasAttribute(a)?`[${a}="${CSS.escape(ae.getAttribute(a))}"]`:"").find(Boolean)||""):"";
   renderAll();if(pdO&&P[pdI])renderPD();if(cdO)renderCart();if($("#infoDlg").open)renderInfo();if(hadScope)emit("scope",{id:null});emit("lang",{prev});
   if(sig){const dl=pdO&&ae.closest("#pd")?$("#pd"):$("#cd"),t=dl.querySelector(sig)||dl.querySelector(".x");if(t&&document.activeElement!==t)t.focus({preventScroll:true})}
-  /* the cart belongs to the shop: switching between LT, EN, RU and PL keeps it, LT ↔ DE keeps the other one aside */
-  let n=0;if(MK(prev)!==mk())st.cart[MK(prev)].forEach(q=>{n+=q});
-  toast(D().langToast,n?D().cartKept.replace("{m}",MK(prev).toUpperCase()).replace("{n}",n):"",null,"info");
+  /* the language never changes the shop: same prices, same cart */
+  toast(D().mk,"",null,"info");
+}
+/* the shop (market) the visitor buys in: prices, stock and season; each one keeps its own cart */
+function setMarket(m){
+  if(m===market||(m!=="lt"&&m!=="de"))return;const prev=market;market=m;
+  try{localStorage.setItem(SK_MKT,m)}catch(e){}
+  st.cat=-1;st.q="";st.tok=[];$("#q").value="";sfReset();const hadScope=!!st.scope;st.scope=null;pdSeq=null;FSEL.clear();
+  $$("#toasts .toast").forEach(x=>x.remove());
+  const pdO=$("#pd").open,cdO=$("#cd").open;
+  renderAll();if(pdO&&P[pdI])renderPD();if(cdO)renderCart();if($("#infoDlg").open)renderInfo();if(hadScope)emit("scope",{id:null});emit("market",{prev});emit("lang",{prev:lang});
+  let n=0;st.cart[prev].forEach(q=>{n+=q});
+  toast(D().mk,n?D().cartKept.replace("{m}",D().mkName[prev]).replace("{n}",n):"",null,"info");
 }
 
 /* ---------- events ---------- */
@@ -4060,6 +4122,7 @@ document.addEventListener("change",e=>{
   const t=e.target;
   if(t.matches("select[data-sel]")){const i=+t.dataset.sel,j=+t.value;if(P[i]&&P[i].v[j]){st.sel[mk()].set(i,j);FSEL.delete(i);refreshProduct(i)}return}
   if(t.id==="sort"){st.sort=t.value;renderCatalog(false);return}
+  if(t.id==="mkSel"){setMarket(t.value);return}
   if(t.matches('input[data-sf][type="checkbox"]')){sfToggle(t.dataset.sf,t.value,t.checked,t);return}
 });
 /* casting weight ("tinka … g"): applied while typing, after a short pause */
@@ -4175,10 +4238,10 @@ const HANDLERS={};
 function emit(ev,detail){(HANDLERS[ev]||[]).slice().forEach(fn=>{try{fn(detail||{})}catch(e){console.error(e)}})}
 window.BB={version:2,
   P,C,T,FREE,PAGE,
-  lang:()=>lang,market:()=>mk(),langs:LANGS.slice(),D,ix:l=>ix(l||lang),money,esc,ui,art,plural,word,norm,
+  lang:()=>lang,market:()=>mk(),setMarket:m=>setMarket(m),langs:LANGS.slice(),D,ix:l=>ix(l||lang),money,esc,ui,art,plural,word,norm,
   stockOf,stockText:(s,short)=>stockText(s||{},short),vprice,vlabel,selOf,select,photos,photoIdx,phHTML,mediaInner,fbIcon,
   keyOf:(i,j)=>P[i].k+"|"+P[i].v[j][0],indexOfKey:k=>KEY.get(k),resolve,
-  cart:()=>new Map(cart()),cartOf:l=>new Map(st.cart[MK(l||lang)]),totals,qtyProduct,
+  cart:()=>new Map(cart()),cartOf:m=>new Map(st.cart[m==="lt"||m==="de"?m:market]),totals,qtyProduct,
   addItem,setQty:(key,n)=>setQty(key,n),openPD:(i,opener,j)=>openPD(i,opener,j),openCart:o=>openCart(o),closeDialogs:()=>$$("dialog").forEach(d=>closeDlg(d,true)),
   openDlg,closeDlg,topDialog:topDlg,toast,goSection,openInfo:(topic,opener)=>openInfo(topic,opener),
   unit:(i,j)=>unitOf(i,j==null?selOf(i):j),unitTxt:(i,j)=>unitTxt(i,j==null?selOf(i):j),unitHTML:(i,j)=>unitHTML(i,j==null?selOf(i):j),unitQty:i=>unitQty(i),
@@ -4199,7 +4262,7 @@ renderAll();
 renderFootMap();
 /* warm the other market's search index and depth map while the browser is idle, so the first LT/DE switch stays quick */
 const idle=(fn,t)=>"requestIdleCallback" in window?requestIdleCallback(fn,{timeout:t}):setTimeout(fn,Math.min(t,200));
-addEventListener("load",()=>idle(()=>{const o=mk()==="lt"?"de":"lt";ix(o);idle(()=>{if(!MAPS[o])MAPS[o]=buildMap(o,true)},4000)},4000),{once:true});
+addEventListener("load",()=>idle(()=>{const o=mk()==="lt"?"de":"lt";ix(lang,o);idle(()=>{if(!MAPS[o])MAPS[o]=buildMap(o,true)},4000)},4000),{once:true});
 emit("ready");
 })();
 </script>
@@ -5183,7 +5246,7 @@ function onChange(e){
   renderHero();renderSection();
   const sel=$("#fcLoc",sec);if(sel)sel.focus({preventScroll:true});
 }
-function renderAll(){st.lang=L();renderHero();renderSection()}
+function renderAll(){st.lang=L()+M();renderHero();renderSection()}
 
 /* hero link: smooth scroll (unless reduced motion) and move focus to the section */
 document.addEventListener("click",e=>{
@@ -5193,8 +5256,8 @@ document.addEventListener("click",e=>{
   sec.scrollIntoView({behavior:reduce()?"auto":"smooth",block:"start"});
   sec.focus({preventScroll:true});
 });
-BB.on("render",()=>{if(st.lang!==L())renderAll()});
-BB.on("lang",()=>{if(st.lang!==L())renderAll()});
+BB.on("render",()=>{if(st.lang!==L()+M())renderAll()});
+BB.on("lang",()=>{if(st.lang!==L()+M())renderAll()});
 /* clock: move the "now" marker; recompute after local midnight */
 function tick(){
   if(document.hidden||!sec)return;
@@ -5204,7 +5267,7 @@ function tick(){
 }
 /* first paint: the hero widget now (above the fold) and the (empty) section in its place; its 7-day content right after
    DOMContentLoaded */
-st.lang=L();renderHero();mountSection();
+st.lang=L()+M();renderHero();mountSection();
 const late=()=>{if(!sec||!sec.firstChild)renderSection();
   /* the other market's default place, computed while the browser is idle: the first LT/DE switch stays quick */
   const o=LOC[DEF[M()==="lt"?"de":"lt"]];if(o&&!st.chosen){const f=()=>{try{data(o)}catch(e){}};if("requestIdleCallback" in window)requestIdleCallback(f,{timeout:4000});else setTimeout(f,400)}};
@@ -6177,7 +6240,7 @@ window.BBKits = {
 const BB = window.BB, K = window.BBKits;
 if (!BB || !K || typeof K.fishSet !== "function" || !BB.slot("cats") || typeof BB.scope !== "function") return;
 const esc = BB.esc, $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
-/* text language; the tile set in TX follows the market (en/ru/pl carry the LT tiles) */
+/* text language; the sea / Norway tile is shown in the DE shop only (onMk) */
 const LG = () => (TX[BB.lang()] ? BB.lang() : "lt"), MIN = 12;
 /* tile: id, fish (kit builder ids), methods (kit builder methods; null = all that list the fish), drawing, kit link fish */
 /* gear that every tile would list (the same landing nets and reels): left to its own categories */
@@ -6191,7 +6254,8 @@ const TILES = {
 const TX = {
   lt: { h: "Pagal žuvį", sub: "Prekės pagal tai, kokią žuvį gaudysi.",
     note: "Parinkta pagal prekių paskirtį ({m}), ne pagal pardavimus.", kit: "Sudėti rinkinį {d}:",
-    tiles: [["pred", "Plėšrūnai", "Lydeka · ešerys · starkis", "Plėšrūnų žūklė", "Žuvys: plėšrūnai", "plėšrūnams"],
+    tiles: [["sea", "Jūra / Norvegija", "Menkė · skumbrė · jūrinis ešerys · otas", "Jūrinė žūklė Norvegijoje: menkė, skumbrė, jūrinis ešerys, otas", "Žuvys: jūra / Norvegija", ""],
+      ["pred", "Plėšrūnai", "Lydeka · ešerys · starkis", "Plėšrūnų žūklė", "Žuvys: plėšrūnai", "plėšrūnams"],
       ["white", "Karšis ir kuoja", "Taikiosios žuvys", "Karšių ir kuojų žūklė", "Žuvys: karšis, kuoja", "karšiui ar kuojai"],
       ["karpis", "Karpis", "Karpių ir Method feeder žūklė", "Karpių žūklė", "Žuvis: karpis", "karpiui"]] },
   de: { h: "Nach Zielfisch", sub: "Artikel passend zum Zielfisch.",
@@ -6200,23 +6264,26 @@ const TX = {
       ["pred", "Raubfisch", "Hecht · Barsch · Zander", "Angeln auf Raubfisch", "Zielfisch: Raubfisch", "für Raubfisch"],
       ["white", "Brasse & Rotauge", "Friedfisch", "Angeln auf Brasse und Rotauge", "Zielfisch: Brasse & Rotauge", "für Brasse und Rotauge"],
       ["karpis", "Karpfen", "Karpfen- und Method-Feeder-Angeln", "Angeln auf Karpfen", "Zielfisch: Karpfen", "für Karpfen"]] },
-  /* en/ru/pl: LT shop, so the LT tile set (no sea tile) */
   en: { h: "By target fish", sub: "Gear for the fish you're after.",
     note: "Picked by what the products are for ({m}), not by sales.", kit: "Build a kit {d}:",
-    tiles: [["pred", "Predators", "Pike · perch · zander", "Predator fishing", "Fish: predators", "for predators"],
+    tiles: [["sea", "Sea / Norway", "Cod · mackerel · redfish · halibut", "Sea fishing in Norway: cod, mackerel, redfish, halibut", "Fish: sea / Norway", ""],
+      ["pred", "Predators", "Pike · perch · zander", "Predator fishing", "Fish: predators", "for predators"],
       ["white", "Bream & roach", "Coarse fish", "Bream and roach fishing", "Fish: bream, roach", "for bream or roach"],
       ["karpis", "Carp", "Carp and method feeder fishing", "Carp fishing", "Fish: carp", "for carp"]] },
   ru: { h: "По рыбе", sub: "Товары под рыбу, которую будешь ловить.",
     note: "Подобрано по назначению товаров ({m}), а не по продажам.", kit: "Собрать набор {d}:",
-    tiles: [["pred", "Хищники", "Щука · окунь · судак", "Ловля хищной рыбы", "Рыба: хищники", "на хищника"],
+    tiles: [["sea", "Море / Норвегия", "Треска · скумбрия · морской окунь · палтус", "Морская рыбалка в Норвегии: треска, скумбрия, морской окунь, палтус", "Рыба: море / Норвегия", ""],
+      ["pred", "Хищники", "Щука · окунь · судак", "Ловля хищной рыбы", "Рыба: хищники", "на хищника"],
       ["white", "Лещ и плотва", "Мирная рыба", "Ловля леща и плотвы", "Рыба: лещ, плотва", "на леща или плотву"],
       ["karpis", "Карп", "Карповая ловля и method feeder", "Ловля карпа", "Рыба: карп", "на карпа"]] },
   pl: { h: "Według ryby", sub: "Sprzęt pod rybę, którą chcesz złowić.",
     note: "Dobrane według przeznaczenia produktów ({m}), nie według sprzedaży.", kit: "Złóż zestaw {d}:",
-    tiles: [["pred", "Drapieżniki", "Szczupak · okoń · sandacz", "Połów drapieżników", "Ryby: drapieżniki", "na drapieżniki"],
+    tiles: [["sea", "Morze / Norwegia", "Dorsz · makrela · karmazyn · halibut", "Wędkarstwo morskie w Norwegii: dorsz, makrela, karmazyn, halibut", "Ryby: morze / Norwegia", ""],
+      ["pred", "Drapieżniki", "Szczupak · okoń · sandacz", "Połów drapieżników", "Ryby: drapieżniki", "na drapieżniki"],
       ["white", "Leszcz i płoć", "Ryby spokojnego żeru", "Połów leszcza i płoci", "Ryby: leszcz, płoć", "na leszcza lub płoć"],
       ["karpis", "Karp", "Wędkarstwo karpiowe i method feeder", "Połów karpia", "Ryba: karp", "na karpia"]] }
 };
+const onMk = t => t[0] !== "sea" || (BB.market ? BB.market() : BB.lang()) === "de";
 const tx = () => TX[LG()];
 
 /* ---------- drawings: 96 × 40, monoline, head left; hairline strokes like the category drawings ---------- */
@@ -6245,12 +6312,12 @@ function setOf(id) {
 }
 /* products that only this tile lists come first (0), then the ones it shares with other tiles of the market */
 function orderOf(id) {
-  const others = tx().tiles.map(t => t[0]).filter(x => x !== id).map(setOf), o = new Map();
+  const others = tx().tiles.filter(onMk).map(t => t[0]).filter(x => x !== id).map(setOf), o = new Map();
   setOf(id).ids.forEach(i => o.set(i, others.filter(s => s.ids.has(i)).length));
   return o;
 }
 const countOf = id => { const ids = setOf(id).ids; if (!BB.avail()) return ids.size; const R = BB.ix(); let n = 0; ids.forEach(i => { if (R[i] && R[i].any) n++; }); return n; };
-const tiles = () => tx().tiles.filter(t => setOf(t[0]).ids.size >= MIN);
+const tiles = () => tx().tiles.filter(t => onMk(t) && setOf(t[0]).ids.size >= MIN);
 
 /* ---------- render ---------- */
 let box = null;
@@ -6317,7 +6384,7 @@ if(!HOST)return;
 const esc=BB.esc;
 /* text language (all five have dictionaries; anything else falls back to lt); the module has no market-dependent logic */
 const LANGS=["lt","de","en","ru","pl"];
-const lg=()=>{const l=BB.lang();return LANGS.indexOf(l)>=0?l:"lt"};
+const lg=()=>{const l=BB.lang();return LANGS.indexOf(l)>=0?l:"lt"},lgk=()=>lg()+(BB.market?BB.market():"");
 const LOC={lt:"lt-LT",de:"de-DE",en:"en-GB",ru:"ru-RU",pl:"pl-PL"};
 
 /* ---------------------------------------------------------------- strings */
@@ -7146,7 +7213,7 @@ HOST.append(sec);
 const pane=k=>st.built[k]?sec.querySelector("#bbt-p-"+k):null;
 
 function render(){
-  const s=S[lg()];st.lang=lg();st.built={};
+  const s=S[lg()];st.lang=lgk();st.built={};
   sec.innerHTML=`<div class="wrap"><div class="sec-h"><div><span class="lab">${esc(s.lab)}</span><h2 id="bbt-t">${esc(s.h2)}</h2></div><p>${esc(s.sub)}</p></div>
 <div class="bbt-tabw"><div class="bbt-tabs" role="tablist" aria-label="${esc(s.lab)}">${s.tabs.map((t,k)=>`<button type="button" role="tab" class="bbt-tab" id="bbt-tab-${k}" data-k="${k}" aria-controls="bbt-p-${k}" aria-selected="${k===st.tab}" tabindex="${k===st.tab?0:-1}"><span class="bbt-no num" aria-hidden="true">${String(k+1).padStart(2,"0")}</span><span>${esc(t)}</span></button>`).join("")}</div></div>
 ${s.tabs.map((t,k)=>`<div class="bbt-panel" role="tabpanel" id="bbt-p-${k}" aria-labelledby="bbt-tab-${k}" tabindex="0"${k===st.tab?"":" hidden"}></div>`).join("")}</div>`;
@@ -7245,15 +7312,15 @@ function renderNow(){
   render();
   if(inSec){const el=sec.querySelector("#"+inSec);if(el)el.focus({preventScroll:true})}
 }
-function renderSoon(){if(!idleH)idleH=idle(()=>{idleH=0;if(st.lang!==lg()||!sec.firstChild)renderNow()})}
+function renderSoon(){if(!idleH)idleH=idle(()=>{idleH=0;if(st.lang!==lgk()||!sec.firstChild)renderNow()})}
 function onLang(){
-  if(st.lang===lg()&&sec.firstChild)return;
+  if(st.lang===lgk()&&sec.firstChild)return;
   if(ourHash())setHash(st.tab);
   if(sec.firstChild&&nearView())renderNow();else renderSoon();
 }
 BB.on("lang",onLang);
 BB.on("render",onLang);
-addEventListener("hashchange",()=>{const k=hashTab();if(k!=null){if(st.lang!==lg()||!sec.firstChild){st.tab=k;renderNow()}else activate(k,false,false);scrollToSec()}});
+addEventListener("hashchange",()=>{const k=hashTab();if(k!=null){if(st.lang!==lgk()||!sec.firstChild){st.tab=k;renderNow()}else activate(k,false,false);scrollToSec()}});
 
 /* ---------------------------------------------------------------- init */
 load();
